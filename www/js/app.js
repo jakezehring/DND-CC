@@ -71,6 +71,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AbilitiesCtrl'
       }
     }
+  })
+
+  .state('tab.inventory', {
+      url: '/inventory',
+      views: {
+          'tab-inventory': {
+              templateUrl: 'templates/tab-inventory.html',
+              controller: 'InventoryCtrl'
+          }
+      }
   });
 
   // if none of the above states are matched, use this as the fallback

@@ -13,4 +13,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AbilitiesCtrl', function($scope) {
+})
+
+.controller('InventoryCtrl', function ($scope) {
 });
