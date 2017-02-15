@@ -1,5 +1,48 @@
 <ion-view view-title="Character">
-  <ion-content>
-      <input type="text" placeholder="Character" /> 
-  </ion-content>
+    <ion-content>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Character Name</span>
+            <input type="text" ng-model="character[0].characterName" placeholder="Rob Hobble" />
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Race</span>
+            <input type="text" ng-model="character[0].race" placeholder="Human">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Alignment</span>
+            <input type="text" ng-model="character[0].alignment" placeholder="Chaotic Neutral">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Class</span>
+            <input type="text" ng-model="character[0].class" placeholder="Fighter">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Level</span>
+            <input type="tel" ng-model="character[0].level" placeholder="5">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Strength</span>
+            <input type="tel" ng-model="character[0].strength" placeholder="5">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Dexterity</span>
+            <input type="tel" ng-model="character[0].dexterity" placeholder="5">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Constitution</span>
+            <input type="tel" ng-model="character[0].constitution" placeholder="5">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Intelligence</span>
+            <input type="tel" ng-model="character[0].intelligence" placeholder="5">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Wisdom</span>
+            <input type="tel" ng-model="character[0].wisdom" placeholder="5">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Charisma</span>
+            <input type="tel" ng-model="character[0].charisma" placeholder="5">
+        </label>
+    </ion-content>
 </ion-view>
