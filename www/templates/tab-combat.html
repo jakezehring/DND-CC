@@ -1,64 +1,103 @@
 <ion-view view-title="Combat">
-  <ion-content>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">HP</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">AC</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Initiative</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Fortitude</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Reflex</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Will</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Grapple</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Base Attack</span>
-          <input type="tel">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Attack</span>
-          <input type="text">
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Attack Bonus</span>
-          <input type="text"/>
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Damage</span>
-          <input type="text"/>
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Critical</span>
-          <input type="text"/>
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Range</span>
-          <input type="text"/>
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Type</span>
-          <input type="text"/>
-      </label>
-      <label class="item item-input item-stacked-label">
-          <span class="input-label">Notes</span>
-          <input type="text" ng-model="combat[0].Notes" />
-      </label>
-  </ion-content>
+    <ion-content class="padding">
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">HP</span>
+                    <input type="tel" />
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">AC</span>
+                    <input type="tel">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Initiative</span>
+                    <input type="tel" >
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Fortitude</span>
+                    <input type="tel" >
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Reflex</span>
+                    <input type="tel">
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Will</span>
+                    <input type="tel">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Grapple</span>
+                    <input type="tel">
+                </label>
+            </div>
+            <div class="col-xs-6">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Base Attack</span>
+                    <input type="tel">
+                </label>
+            </div>
+        </div>
+        <br />
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Attack</span>
+            <input type="text" />
+        </label>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Attack Bonus</span>
+                    <input type="text"/>
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Damage</span>
+                    <input type="text"/>
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Critical</span>
+                    <input type="text" />
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col=xs=3">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Range</span>
+                    <input type="text" />
+                </label>
+            </div>
+            <div class="col-xs-3">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Type</span>
+                    <input type="text" />
+                </label>
+            </div>
+            <div class="col-xs-6">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Notes</span>
+                    <input type="text" />
+                </label>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>
