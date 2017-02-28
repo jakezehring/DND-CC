@@ -1,7 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('CharCtrl', function ($scope) {
-   
+.controller('CharCtrl', function ($scope, $localStorage) {
+    $scope.$storage = $localStorage.$default({
+        name: "Rob Robinsion"
+        race: "human"
+        
+    });
 })
 
 .controller('CombatCtrl', function($scope, Chats) {
