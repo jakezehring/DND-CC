@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
         AC: 1,
         Initiative: 1,
         Fortitude: 1,
-         Reflex: 1,
+        Reflex: 1,
         Will: 1,
         Grapple: 1,
         BaseAttack: 1,
@@ -37,11 +37,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AbilitiesCtrl', [ 
-    '$state', '$scope', '$ionicPopup',
-  function ($state, $scope, $ionicPopup){
-    $scope.abil = [];
-    $scope.feats = [];
-    $scope.spells = []; 
+    '$state', '$scope', '$ionicPopup', '$localStorage',
+  function ($state, $scope, $ionicPopup, $localStorage) {
+      $scope.$storage = $localStorage.$default({
+          abil: [],
+          feats: [],
+          spells: []
+      });
         
     $scope.abiladd = function(type) {
         $scope.data = {type}
@@ -65,14 +67,16 @@ angular.module('starter.controllers', [])
             },
             ]
         });
+        
         mypop.then(function(res){
-            if(res){
+            if (res) {
+                console.log(res);
                 if(res.type == 1){
-                    $scope.spells.push(res);
+                    $scope.$storage.spells.push(res);
                 } else if(res.type==2){
-                    $scope.feats.push(res);
+                    $scope.$storage.feats.push(res);
                 } else if(res.type==3){
-                    $scope.abil.push(res);
+                    $scope.$storage.abil.push(res);
                 }
             }
         });
