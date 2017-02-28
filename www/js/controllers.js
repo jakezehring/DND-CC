@@ -16,14 +16,24 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('CombatCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('CombatCtrl', function ($scope, $localStorage) {
+    $scope.$storage = $localStorage.$default({
+        HP: 1,
+        AC: 1,
+        Initiative: 1,
+        Fortitude: 1,
+         Reflex: 1,
+        Will: 1,
+        Grapple: 1,
+        BaseAttack: 1,
+        Weapon: "Longsword",
+        AttackBonus: "0",
+        Damage: "1d2",
+        Critical: "19-20",
+        Range: "0",
+        Type: "slashing",
+        Notes: " "
+    });
 })
 
 .controller('AbilitiesCtrl', [ 
