@@ -2,9 +2,17 @@ angular.module('starter.controllers', [])
 
 .controller('CharCtrl', function ($scope, $localStorage) {
     $scope.$storage = $localStorage.$default({
-        name: "Rob Robinsion"
-        race: "human"
-        
+        Name: "Rob Robinsion",
+        Race: "Human",
+        Alignment: "chaotic Neutral",
+        Class: "fighter",
+        Level: 1,
+        Strength: 6,
+        Dexterity: 6,
+        Constitution: 6,
+        Intelligence: 6,
+        Wisdom: 6,
+        Charisma: 6
     });
 })
 
