@@ -84,10 +84,15 @@ angular.module('starter.controllers', [])
 }])
 
  .controller('InventoryCtrl', [
-        '$state', '$scope', '$ionicPopup',
-   function ($state, $scope, $ionicPopup){
-       $scope.items = [];
-       $scope.gear = [];
+        '$state', '$scope', '$ionicPopup', '$localStorage',
+   function ($state, $scope, $ionicPopup, $localStorage) {
+       $scope.$storage = $localStorage.$default({
+           Gold: 0,
+           Silver: 0,
+           Copper: 0,
+           Items: [],
+           Gear: []
+       })
 
 
        $scope.shouldShowDelete = true;
@@ -119,9 +124,9 @@ angular.module('starter.controllers', [])
            mypop.then(function (res) {
                if (res) {
                    if (res.type == 1) {
-                       $scope.items.push(res);
+                       $scope.$storage.Items.push(res);
                    } else if (res.type == 2) {
-                       $scope.gear.push(res);
+                       $scope.$storage.Gear.push(res);
                    }
                }
            });
