@@ -1,6 +1,14 @@
 angular.module('starter.controllers', [])
 
-.controller('CharCtrl', function ($scope, $localStorage) {
+.controller('TabsCtrl', function($scope, $ionicSideMenuDelegate) {
+  
+    $scope.openMenu = function () {
+        $ionicSideMenuDelegate.toggleLeft();
+    }
+  
+})
+
+.controller('CharCtrl', function ($scope, $localStorage, $ionicSideMenuDelegate) {
     $scope.$storage = $localStorage.$default({
         Name: "Rob Robinsion",
         Race: "Human",
