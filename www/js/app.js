@@ -47,7 +47,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
   .state('tab.char', {
     url: '/char',
     views: {
-      'tab-char': {
+      'menuContent': {
         templateUrl: 'templates/tab-char.html',
         controller: 'CharCtrl'
       }
@@ -57,7 +57,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
   .state('tab.combat', {
       url: '/combat',
       views: {
-        'tab-combat': {
+        'menuContent': {
           templateUrl: 'templates/tab-combat.html',
           controller: 'CombatCtrl'
         }
@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
   .state('tab.abilities', {
     url: '/abilities',
     views: {
-      'tab-abilities': {
+      'menuContent': {
         templateUrl: 'templates/tab-abilities.html',
         controller: 'AbilitiesCtrl'
       }
@@ -77,7 +77,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
   .state('tab.inventory', {
       url: '/inventory',
       views: {
-          'tab-inventory': {
+          'menuContent': {
               templateUrl: 'templates/tab-inventory.html',
               controller: 'InventoryCtrl'
           }
