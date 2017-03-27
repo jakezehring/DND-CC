@@ -8,13 +8,20 @@ angular.module('starter.controllers', [])
   
 })
 
-    .controller('NewCtrl', function ($scope, $localStorage) {
+    .controller('NewCtrl', function ($scope, $state, $localStorage) {
+        $scope.$storage = $localStorage.$default({
+            Name: ""
+        });
 
+        $scope.startApp = function () {
+            if ($scope.$storage.Name != "")
+                $state.go('tab.char');
+        }
     })
 
 .controller('CharCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate) {
     $scope.$storage = $localStorage.$default({
-        Name: "Hello",
+        Name: "",
         Race: "Human",
         Alignment: "chaotic Neutral",
         Class: "fighter",
@@ -27,11 +34,9 @@ angular.module('starter.controllers', [])
         Charisma: 6
     });
 
-    $scope.$storage.Name = "";
-
     if($scope.$storage.Name=="")
     {
-        $state.go('new')
+        $state.go('new');
     }
 })
 
