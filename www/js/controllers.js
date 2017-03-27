@@ -8,6 +8,10 @@ angular.module('starter.controllers', [])
   
 })
 
+    .controller('NewCtrl', function ($scope) {
+
+    })
+
 .controller('CharCtrl', function ($scope, $localStorage, $ionicSideMenuDelegate) {
     $scope.$storage = $localStorage.$default({
         Name: "Rob Robinsion",
