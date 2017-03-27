@@ -8,11 +8,11 @@ angular.module('starter.controllers', [])
   
 })
 
-    .controller('NewCtrl', function ($scope) {
+    .controller('NewCtrl', function ($scope, $localStorage) {
 
     })
 
-.controller('CharCtrl', function ($scope, $localStorage, $ionicSideMenuDelegate) {
+.controller('CharCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate) {
     $scope.$storage = $localStorage.$default({
         Name: "Hello",
         Race: "Human",
@@ -26,12 +26,13 @@ angular.module('starter.controllers', [])
         Wisdom: 6,
         Charisma: 6
     });
-    $scope.$storage.Name="potatoes"
 
-    //if($scope.$storage.Name=="")
-   // {
-     //   $state.go("new")
-   // }
+    $scope.$storage.Name = "";
+
+    if($scope.$storage.Name=="")
+    {
+        $state.go('new')
+    }
 })
 
 .controller('CombatCtrl', function ($scope, $localStorage) {
