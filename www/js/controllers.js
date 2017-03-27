@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
 .controller('CharCtrl', function ($scope, $localStorage, $ionicSideMenuDelegate) {
     $scope.$storage = $localStorage.$default({
-        Name: "Rob Robinsion",
+        Name: "Hello",
         Race: "Human",
         Alignment: "chaotic Neutral",
         Class: "fighter",
@@ -26,6 +26,12 @@ angular.module('starter.controllers', [])
         Wisdom: 6,
         Charisma: 6
     });
+    $scope.$storage.Name="potatoes"
+
+    //if($scope.$storage.Name=="")
+   // {
+     //   $state.go("new")
+   // }
 })
 
 .controller('CombatCtrl', function ($scope, $localStorage) {
