@@ -1,41 +1,57 @@
 angular.module('starter.controllers', [])
 
-.controller('TabsCtrl', function($scope, $ionicSideMenuDelegate) {
-  
+.controller('TabsCtrl', function ($scope, $localStorage, $ionicSideMenuDelegate) {
+ 
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
+    }
+
+    $scope.goToChar = function (place) {
+        $scope.cur = place;
+        $state.go('tab.char')
     }
   
 })
 
     .controller('NewCtrl', function ($scope, $state, $localStorage) {
-        $scope.$storage = $localStorage.$default({
-            Name: ""
-        });
+        $scope.$storage = $localStorage
+
+        $scope.input = {
+            name: ""
+        }
 
         $scope.startApp = function () {
-            if ($scope.$storage.Name != "")
+            console.log($scope)
+            var character = {
+                Name: $scope.input.name,
+                Race: "Human",
+                Alignment: "chaotic Neutral",
+                Class: "fighter",
+                Level: 1,
+                Strength: 6,
+                Dexterity: 6,
+                Constitution: 6,
+                Intelligence: 6,
+                Wisdom: 6,
+                Charisma: 6
+            }
+                $scope.$storage.characters.push(character);
                 $state.go('tab.char');
+
         }
     })
 
 .controller('CharCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate) {
     $scope.$storage = $localStorage.$default({
-        Name: "",
-        Race: "Human",
-        Alignment: "chaotic Neutral",
-        Class: "fighter",
-        Level: 1,
-        Strength: 6,
-        Dexterity: 6,
-        Constitution: 6,
-        Intelligence: 6,
-        Wisdom: 6,
-        Charisma: 6
-    });
+        characters: []
+    })
+    //$localStorage.$reset()
 
-    if($scope.$storage.Name=="")
-    {
+    if ($scope.cur === undefined) {
+        $scope.cur = 0
+    }
+
+    if ($scope.$storage.characters[$scope.cur] === undefined) {
         $state.go('new');
     }
 })
