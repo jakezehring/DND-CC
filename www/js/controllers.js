@@ -21,7 +21,6 @@ angular.module('starter.controllers', [])
         }
 
         $scope.startApp = function () {
-            console.log($scope)
             var character = {
                 Name: $scope.input.name,
                 Race: "Human",
@@ -35,25 +34,37 @@ angular.module('starter.controllers', [])
                 Wisdom: 6,
                 Charisma: 6
             }
-                $scope.$storage.characters.push(character);
-                $state.go('tab.char');
+            $scope.$storage.characters.push(character);
+            $scope.$storage.length = $scope.$storage.length + 1;
+            $scope.$storage.cur = $scope.$storage.length - 1;
+            $scope.$storage.update = 1;
+            $state.go('tab.char');
 
         }
     })
 
-.controller('CharCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate) {
+.controller('CharCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate, $window) {
     $scope.$storage = $localStorage.$default({
-        characters: []
+        characters: [],
+        length: 0,
+        cur: 0,
+        update: 0
     })
-    //$localStorage.$reset()
 
-    if ($scope.cur === undefined) {
-        $scope.cur = 0
-    }
+    //$localStorage.$reset();
 
-    if ($scope.$storage.characters[$scope.cur] === undefined) {
-        $state.go('new');
-    }
+    $scope.cur = $scope.$storage.cur;
+
+        if ($scope.$storage.characters[$scope.cur] === undefined)
+            $state.go('new');
+        
+        $scope.$on('$ionicView.beforeEnter', function () {
+            if ($scope.$storage.update == 1) {
+                $scope.$storage.update = 0
+                $window.location.reload(true);
+            }
+        });
+
 })
 
 .controller('CombatCtrl', function ($scope, $localStorage) {

@@ -51,11 +51,11 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
   // Each tab has its own nav history stack:
 
   .state('tab.char', {
-    url: '/char',
+      url: '/char',
     views: {
       'menuContent': {
         templateUrl: 'templates/tab-char.html',
-        controller: 'CharCtrl'
+        controller: 'CharCtrl',
       }
     }
   })
