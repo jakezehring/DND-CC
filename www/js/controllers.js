@@ -10,6 +10,7 @@ angular.module('starter.controllers', [])
     $scope.characters = [];
     for (cur = 0; cur < $scope.$storage.length; cur++)
         $scope.characters.push($scope.$storage.characters[cur].Name)
+    console.log($scope.characters)
 
     $scope.goToChar = function (place) {
         $scope.cur = place;
