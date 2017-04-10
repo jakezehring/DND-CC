@@ -18,12 +18,7 @@ navigation history that also transitions its views in and out.
             <h1 class="title">Characters</h1>
         </ion-header-bar>
         <ion-content>
-            <ion-item class="item-button-right" ng-repeat="item in $storage.characters" item="data">
-                <font size="5"><b>{{Name}}</b></font><br>
-                <button class="button" ng-click="goToChar({{place}})">
-                    <i class="icon ion-minus-circled"></i>
-                </button>
-            </ion-item>
+            <div ng-repeat="character in characters">{{character}}</div>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>

@@ -1,10 +1,15 @@
 angular.module('starter.controllers', [])
 
 .controller('TabsCtrl', function ($scope, $localStorage, $ionicSideMenuDelegate) {
+    $scope.$storage = $localStorage
  
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     }
+
+    $scope.characters = [];
+    for (cur = 0; cur < $scope.$storage.length; cur++)
+        $scope.characters.push($scope.$storage.characters[cur].Name)
 
     $scope.goToChar = function (place) {
         $scope.cur = place;
