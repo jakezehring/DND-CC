@@ -26,7 +26,19 @@ angular.module('starter.controllers', [])
         $ionicSideMenuDelegate.toggleLeft();
         $state.go('new')
     }
-  
+    
+    $scope.rule3 = true;
+
+        if($scope.$storage.characters[$scope.$storage.cur] === undefined)
+            $scope.rule3 = false
+        if ($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
+            $scope.rule3 = false
+        
+        $scope.rule5 = !$scope.rule3
+
+    console.log($scope.rule3)
+
+
 })
 
     .controller('NewCtrl', function ($scope, $state, $localStorage) {
