@@ -35,10 +35,12 @@ angular.module('starter.controllers', [])
         $scope.input = {
             name: ""
         }
+        $scope.ruleset = 3.5
 
-        $scope.startApp = function () {
+        $scope.startApp = function (ruleset) {
             var character = {
                 Name: $scope.input.name,
+                Ruleset: ruleset,
                 Race: "Human",
                 Alignment: "chaotic Neutral",
                 Class: "fighter",
