@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('TabsCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate) {
+.controller('TabsCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate, $window) {
     $scope.$storage = $localStorage
  
     $scope.openMenu = function () {
@@ -10,11 +10,16 @@ angular.module('starter.controllers', [])
     $scope.characters = [];
     for (cur = 0; cur < $scope.$storage.length; cur++)
         $scope.characters.push($scope.$storage.characters[cur].Name)
-    console.log($scope.characters)
 
-    $scope.goToChar = function (place) {
-        $scope.cur = place;
-        $state.go('tab.char')
+    $scope.goToChar = function (character) {
+        var cur = 0;
+        for (i = 0; i < $scope.$storage.length; i++) {
+            if($scope.$storage.characters[i].Name == character)
+                cur = $scope.$storage.characters[i].tracker
+        }
+        $scope.$storage.cur = cur;
+        $ionicSideMenuDelegate.toggleLeft();
+        $window.location.reload(true);
     }
 
     $scope.new = function () {
@@ -43,7 +48,8 @@ angular.module('starter.controllers', [])
                 Constitution: 6,
                 Intelligence: 6,
                 Wisdom: 6,
-                Charisma: 6
+                Charisma: 6,
+                tracker: $scope.$storage.length
             }
             $scope.$storage.characters.push(character);
             $scope.$storage.length = $scope.$storage.length + 1;
