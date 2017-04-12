@@ -4,9 +4,41 @@
     </ion-nav-buttons>
     <ion-content>
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col col-33">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Strength</span>
+                    <input type="tel" ng-model="$storage.characters[cur].Strength">
+                </label>
             </div>
-            <div class="col-xs-4">
+            <div class="col col-67">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Class</span>
+                    <input type="text" ng-model="$storage.characters[cur].Class">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-33">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Dexterity</span>
+                    <input type="tel" ng-model="$storage.characters[cur].Dexterity">
+                </label>
+            </div>
+            <div class="col col-67">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Alignment</span>
+                    <input type="text" ng-model="$storage.characters[cur].Alignment">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-33">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Constitution</span>
+                    <input type="tel" ng-model="$storage.characters[cur].Constitution">
+                </label>
+            </div>
+            <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Race</span>
                     <input type="text" ng-model="$storage.characters[cur].Race">
@@ -14,19 +46,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-5">
+            <div class="col col-33">
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Alignment</span>
-                    <input type="text" ng-model="$storage.characters[cur].Alignment">
+                    <span class="input-label">Intelligence</span>
+                    <input type="tel" ng-model="$storage.characters[cur].Intelligence">
                 </label>
             </div>
-            <div class="col-xs-4">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Class</span>
-                    <input type="text" ng-model="$storage.characters[cur].Class">
-                </label>
-            </div>
-            <div class="col-xs-3">
+            <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Level</span>
                     <input type="tel" ng-model="$storage.characters[cur].Level">
@@ -34,42 +60,58 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-4">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Strength</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Strength">
-                </label>
-            </div>
-            <div class="col-xs-4">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Dexterity</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Dexterity">
-                </label>
-            </div>
-            <div class="col-xs-4">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Constitution</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Constituition">
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Intelligence</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Intelligence">
-                </label>
-            </div>
-            <div class="col-xs-4">
+            <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Wisdom</span>
                     <input type="tel" ng-model="$storage.characters[cur].Wisdom">
                 </label>
             </div>
-            <div class="col-xs-4">
+            <div class="col col-67">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Experience</span>
+                    <input type="text" ng-model="$storage.characters[cur].Exp">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Charisma</span>
                     <input type="tel" ng-model="$storage.characters[cur].Charisma">
+                </label>
+            </div>
+            <div class="col col-67">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Diety</span>
+                    <input type="text" ng-model="$storage.characters[cur].Diety">
+                </label>
+            </div>
+        </div>
+        <div class="row" ng-hide="{{rule5}}">
+            <div class="col">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Personaility Traits</span>
+                    <input type="text" ngmodel="$storage.characters[cur].traits" />
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Ideals</span>
+                    <input type="text" ngmodel="$storage.characters[cur].ideals" />
+                </label>
+            </div>
+        </div>
+        <div class="row" ng-hide="{{rule5}}">
+            <div class="col">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Bonds</span>
+                    <input type="text" ngmodel="$storage.characters[cur].bonds" />
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">flaws</span>
+                    <input type="text" ngmodel="$storage.characters[cur].flaws" />
                 </label>
             </div>
         </div>

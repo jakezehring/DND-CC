@@ -65,6 +65,10 @@ angular.module('starter.controllers', [])
                 Charisma: 6,
                 Diety: "",
                 Exp: 0,
+                Traits: "",
+                Ideals: "",
+                Bonds: "",
+                Flaws: "",
                 tracker: $scope.$storage.length
             }
             $scope.$storage.characters.push(character);
