@@ -83,6 +83,7 @@ angular.module('starter.controllers', [])
                 Reflex: 1,
                 Will: 1,
                 Exahustion: 0,
+                Bonus: 0,
                 Hit_die: 5,
                 Max_die: 5,
                 Grapple: 1,

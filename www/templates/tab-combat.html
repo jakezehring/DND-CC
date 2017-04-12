@@ -50,10 +50,17 @@
             </div>
         </div>
         <div class="row" ng-show="{{rule3}}">
-            <div class="col col-33">
-                Insperation <br />
-                <input type="checkbox" class="largerCheckbox" />
+            <div class="col col-50">
+                <ion-checkbox [(ngModel)]="pepperoni">Inspiration</ion-checkbox>
             </div>
+            <div class="col">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Proficiency Bonus</span>
+                    <input type="tel" ng-model="$storage.characters[cur].Bonus">
+                </label>
+            </div>
+        </div>
+        <div class="row" ng-show="{{rule3}}">
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Exahustion</span>
