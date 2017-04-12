@@ -29,9 +29,9 @@ angular.module('starter.controllers', [])
     
     $scope.rule3 = true;
 
-        if($scope.$storage.characters[$scope.$storage.cur] === undefined)
+        if($scope.$storage.characters === undefined)
             $scope.rule3 = false
-        if ($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
+        else if($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
             $scope.rule3 = false
         
         $scope.rule5 = !$scope.rule3
@@ -63,6 +63,8 @@ angular.module('starter.controllers', [])
                 Intelligence: 6,
                 Wisdom: 6,
                 Charisma: 6,
+                Diety: "",
+                Exp: 0,
                 tracker: $scope.$storage.length
             }
             $scope.$storage.characters.push(character);

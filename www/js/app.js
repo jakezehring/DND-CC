@@ -54,7 +54,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
       url: '/char',
     views: {
       'menuContent': {
-        templateUrl: 'templates/tab-char.html',
+        templateUrl: 'templates/tab-char - Copy.html',
         controller: 'CharCtrl',
       }
     }
