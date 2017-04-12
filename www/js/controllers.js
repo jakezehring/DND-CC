@@ -74,6 +74,28 @@ angular.module('starter.controllers', [])
             $scope.$storage.characters.push(character);
             $scope.$storage.length = $scope.$storage.length + 1;
             $scope.$storage.cur = $scope.$storage.length - 1;
+            var combat = {
+                HP: 1,
+                Max_hp: 10,
+                AC: 1,
+                Initiative: 1,
+                Fortitude: 1,
+                Reflex: 1,
+                Will: 1,
+                Exahustion: 0,
+                Hit_die: 5,
+                Max_die: 5,
+                Grapple: 1,
+                BaseAttack: 1,
+                Weapon: "Longsword",
+                AttackBonus: "0",
+                Damage: "1d2",
+                Critical: "19-20",
+                Range: "0",
+                Type: "slashing",
+                Notes: " "
+            }
+            $scope.$storage.combats.push(combat);
             $scope.$storage.update = 1;
             $state.go('tab.char');
 
@@ -83,6 +105,9 @@ angular.module('starter.controllers', [])
 .controller('CharCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate, $window) {
     $scope.$storage = $localStorage.$default({
         characters: [],
+        combats: [],
+        abilities: [],
+        inventories: [],
         length: 0,
         cur: 0,
         update: 0
@@ -105,23 +130,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('CombatCtrl', function ($scope, $localStorage) {
-    $scope.$storage = $localStorage.$default({
-        HP: 1,
-        AC: 1,
-        Initiative: 1,
-        Fortitude: 1,
-        Reflex: 1,
-        Will: 1,
-        Grapple: 1,
-        BaseAttack: 1,
-        Weapon: "Longsword",
-        AttackBonus: "0",
-        Damage: "1d2",
-        Critical: "19-20",
-        Range: "0",
-        Type: "slashing",
-        Notes: " "
-    });
+    $scope.$storage = $localStorage
 })
 
 .controller('AbilitiesCtrl', [ 
