@@ -7,25 +7,25 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">HP</span>
-                    <input type="tel" ng-model="$storage.characters[cur].HP" />
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].HP" />
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Max HP</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Max_hp" />
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Max_hp" />
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">AC</span>
-                    <input type="tel" ng-model="$storage.characters[cur].AC">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].AC">
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Initiative</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Initiative" >
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Initiative" >
                 </label>
             </div>
         </div>
@@ -33,30 +33,30 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Fortitude</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Fortitude" >
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Fortitude" >
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Reflex</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Reflex">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Reflex">
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Will</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Will">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Will">
                 </label>
             </div>
         </div>
         <div class="row" ng-show="{{rule3}}">
             <div class="col col-50">
-                <ion-checkbox [(ngModel)]="pepperoni">Inspiration</ion-checkbox>
+                <ion-checkbox ng-model="$storage.combats[$storage.cur].Inspiration">Inspiration</ion-checkbox>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Proficiency Bonus</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Bonus">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Bonus">
                 </label>
             </div>
         </div>
@@ -64,19 +64,19 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Exahustion</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Exahustion">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Exahustion">
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Hit die</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Hit_die">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Hit_die">
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Max die</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Max_die">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Max_die">
                 </label>
             </div>
         </div>
@@ -84,13 +84,13 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Grapple</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Grapple">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].Grapple">
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Base Attack</span>
-                    <input type="tel" ng-model="$storage.characters[cur].BaseAttack">
+                    <input type="tel" ng-model="$storage.combats[$storage.cur].BaseAttack">
                 </label>
             </div>
         </div>
@@ -99,7 +99,7 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Weapon</span>
-                    <input type="text" ng-model="$storage.characters[cur].Weapon" />
+                    <input type="text" ng-model="$storage.combats[$storage.cur].Weapon" />
                 </label>
             </div>
         </div>
@@ -107,19 +107,19 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Attack Bonus</span>
-                    <input type="text" ng-model="$storage.characters[cur].AttackBonus"/>
+                    <input type="text" ng-model="$storage.combats[$storage.cur].AttackBonus"/>
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Damage</span>
-                    <input type="text" ng-model="$storage.characters[cur].Damage"/>
+                    <input type="text" ng-model="$storage.combats[$storage.cur].Damage"/>
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Critical</span>
-                    <input type="text" ng-model="$storage.characters[cur].Critical"/>
+                    <input type="text" ng-model="$storage.combats[$storage.cur].Critical"/>
                 </label>
             </div>
         </div>
@@ -127,19 +127,19 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Range</span>
-                    <input type="text" ng-model="$storage.characters[cur].Range"/>
+                    <input type="text" ng-model="$storage.combats[$storage.cur].Range"/>
                 </label>
             </div>
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Type</span>
-                    <input type="text" ng-model="$storage.characters[cur].Type"/>
+                    <input type="text" ng-model="$storage.combats[$storage.cur].Type"/>
                 </label>
             </div>
             <div class="col col-50">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Notes</span>
-                    <input type="text" ng-model="$storage.characters[cur].Notes"/>
+                    <input type="text" ng-model="$storage.combats[$storage.cur].Notes"/>
                 </label>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<ion-view title="{{$storage.characters[cur].Name}}">
+<ion-view title="{{$storage.characters[$storage.cur].Name}}">
     <ion-nav-buttons side="left">
         <button ion-button small ng-click="openMenu()">Characters</button>
     </ion-nav-buttons>
@@ -7,13 +7,13 @@
             <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Strength</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Strength">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Strength">
                 </label>
             </div>
             <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Class</span>
-                    <input type="text" ng-model="$storage.characters[cur].Class">
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Class">
                 </label>
             </div>
         </div>
@@ -21,13 +21,13 @@
             <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Dexterity</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Dexterity">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Dexterity">
                 </label>
             </div>
             <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Alignment</span>
-                    <input type="text" ng-model="$storage.characters[cur].Alignment">
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Alignment">
                 </label>
             </div>
         </div>
@@ -35,13 +35,13 @@
             <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Constitution</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Constitution">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Constitution">
                 </label>
             </div>
             <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Race</span>
-                    <input type="text" ng-model="$storage.characters[cur].Race">
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Race">
                 </label>
             </div>
         </div>
@@ -49,13 +49,13 @@
             <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Intelligence</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Intelligence">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Intelligence">
                 </label>
             </div>
             <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Level</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Level">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Level">
                 </label>
             </div>
         </div>
@@ -63,13 +63,13 @@
             <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Wisdom</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Wisdom">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Wisdom">
                 </label>
             </div>
             <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Experience</span>
-                    <input type="text" ng-model="$storage.characters[cur].Exp">
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Exp">
                 </label>
             </div>
         </div>
@@ -77,13 +77,13 @@
             <div class="col col-33">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Charisma</span>
-                    <input type="tel" ng-model="$storage.characters[cur].Charisma">
+                    <input type="tel" ng-model="$storage.characters[$storage.cur].Charisma">
                 </label>
             </div>
             <div class="col col-67">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Diety</span>
-                    <input type="text" ng-model="$storage.characters[cur].Diety">
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Diety">
                 </label>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Personaility Traits</span>
-                    <input type="text" ngmodel="$storage.characters[cur].traits" />
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Traits" />
                 </label>
             </div>
         </div>
@@ -99,7 +99,7 @@
             <div class="col" ng-hide="{{rule5}}">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Ideals</span>
-                    <input type="text" ngmodel="$storage.characters[cur].ideals" />
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Ideals" />
                 </label>
             </div>
         </div>
@@ -107,7 +107,7 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Bonds</span>
-                    <input type="text" ngmodel="$storage.characters[cur].bonds" />
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Bonds" />
                 </label>
             </div>
         </div>
@@ -115,7 +115,7 @@
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">flaws</span>
-                    <input type="text" ngmodel="$storage.characters[cur].flaws" />
+                    <input type="text" ng-model="$storage.characters[$storage.cur].Flaws" />
                 </label>
             </div>
         </div>

@@ -10,9 +10,9 @@
                     <i class="icon ion-plus-circled"></i>
                 </button>
             </ion-item>
-            <ion-item class="item-button-right" ng-repeat="item in $storage.spells" item="data">
+            <ion-item class="item-button-right" ng-repeat="item in $storage.abilities[$storage.cur].spells" item="data">
                 <font size="5"><b>{{item.title}}</b></font><br>
-                <button class="button" ng-click="$storage.spells.splice($storage.spells.indexOf(item), 1);">
+                <button class="button" ng-click="$storage.spells.splice($storage.abilities[$storage.cur].spells.indexOf(item), 1);">
                     <i class="icon ion-minus-circled"></i>
                 </button>
                 {{item.description}}
@@ -23,9 +23,9 @@
                     <i class="icon ion-plus-circled"></i>
                 </button>
             </ion-item>
-            <ion-item class="item-button-right" ng-repeat="item in $storage.feats" item="data">
+            <ion-item class="item-button-right" ng-repeat="item in $storage.abilities[$storage.cur].feats" item="data">
                 <font size="5"><b>{{item.title}}</b></font><br>
-                <button class="button" ng-click="$storage.feats.splice($storage.feats.indexOf(item), 1);">
+                <button class="button" ng-click="$storage.feats.splice($storage.abilities[$storage.cur].feats.indexOf(item), 1);">
                     <i class="icon ion-minus-circled"></i>
                 </button>
                 {{item.description}}
@@ -36,9 +36,9 @@
                     <i class="icon ion-plus-circled"></i>
                 </button>
             </ion-item>
-            <ion-item class="item-button-right" ng-repeat="item in $storage.abil" item="data">
+            <ion-item class="item-button-right" ng-repeat="item in $storage.abilities[$storage.cur].abil" item="data">
                 <font size="5"><b>{{item.title}}</b></font><br>
-                <button class="button" ng-click="$storage.abil.splice($storage.abil.indexOf(item), 1);">
+                <button class="button" ng-click="$storage.abil.splice($storage.abilities[$storage.cur].abil.indexOf(item), 1);">
                     <i class="icon ion-minus-circled"></i>
                 </button>
                 {{item.description}}

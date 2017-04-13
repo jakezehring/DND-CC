@@ -2,11 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('TabsCtrl', function ($scope, $state, $localStorage, $ionicSideMenuDelegate, $window) {
     $scope.$storage = $localStorage
- 
+
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     }
-        $scope.characters = [];
+    $scope.characters = [];
 
     for (cur = 0; cur < $scope.$storage.length; cur++)
         $scope.characters.push($scope.$storage.characters[cur].tracker)
@@ -22,15 +22,15 @@ angular.module('starter.controllers', [])
         $ionicSideMenuDelegate.toggleLeft();
         $state.go('new')
     }
-    
+
     $scope.rule3 = true;
 
-        if($scope.$storage.characters === undefined)
-            $scope.rule3 = false
-        else if($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
-            $scope.rule3 = false
-        
-        $scope.rule5 = !$scope.rule3
+    if ($scope.$storage.characters === undefined)
+        $scope.rule3 = false
+    else if ($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
+        $scope.rule3 = false
+
+    $scope.rule5 = !$scope.rule3
 
 
 
@@ -78,6 +78,7 @@ angular.module('starter.controllers', [])
                 Reflex: 1,
                 Will: 1,
                 Exahustion: 0,
+                Inspiration: true,
                 Bonus: 0,
                 Hit_die: 5,
                 Max_die: 5,
@@ -92,6 +93,23 @@ angular.module('starter.controllers', [])
                 Notes: " "
             }
             $scope.$storage.combats.push(combat);
+            var ability = {
+                abil: [],
+                feats: [],
+                spells: []
+            }
+            $scope.$storage.abilities.push(ability)
+            var money = {
+                Gold: 0,
+                Silver: 0,
+                Copper: 0,
+            }
+            $scope.$storage.monies.push(money)
+            var inventory = {
+                gear: [],
+                items: [],
+            }
+            $scope.$storage.inventories.push(inventory)
             $scope.$storage.update = 1;
             $state.go('tab.char');
 
@@ -103,6 +121,7 @@ angular.module('starter.controllers', [])
         characters: [],
         combats: [],
         abilities: [],
+        monies: [],
         inventories: [],
         length: 0,
         cur: 0,
@@ -113,79 +132,73 @@ angular.module('starter.controllers', [])
 
     $scope.cur = $scope.$storage.cur;
 
-        if ($scope.$storage.characters[$scope.cur] === undefined)
-            $state.go('new');
-        
-        $scope.$on('$ionicView.beforeEnter', function () {
-            if ($scope.$storage.update == 1) {
-                $scope.$storage.update = 0
-                $window.location.reload(true);
-            }
-        });
+    if ($scope.$storage.characters[$scope.cur] === undefined)
+        $state.go('new');
+
+    $scope.$on('$ionicView.beforeEnter', function () {
+        if ($scope.$storage.update == 1) {
+            $scope.$storage.update = 0
+            $window.location.reload(true);
+        }
+    });
 
 })
 
 .controller('CombatCtrl', function ($scope, $localStorage) {
     $scope.$storage = $localStorage
+    console.log($scope.$storage.combats[$scope.$storage.cur])
 })
 
-.controller('AbilitiesCtrl', [ 
+.controller('AbilitiesCtrl', [
     '$state', '$scope', '$ionicPopup', '$localStorage',
   function ($state, $scope, $ionicPopup, $localStorage) {
-      $scope.$storage = $localStorage.$default({
-          abil: [],
-          feats: [],
-          spells: []
-      });
-        
-    $scope.abiladd = function(type) {
-        $scope.data = {type}
-        var mypop =
-        $ionicPopup.show({
-            template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
-            title: 'Add Ability',
-            cssClass: 'addAbil',
-            scope: $scope,
-            buttons: [
-            {text: 'Cancel' },
-            {text: 'Save',
-                type: 'button-positive',
-                onTap: function(e) {
-                    if((!$scope.data.title)||(!$scope.data.description)){
-                        e.preventDefault();
-                    } else{
-                        return $scope.data;
-                    }
-                }
-            },
-            ]
-        });
-        
-        mypop.then(function(res){
-            if (res) {
-                console.log(res);
-                if(res.type == 1){
-                    $scope.$storage.spells.push(res);
-                } else if(res.type==2){
-                    $scope.$storage.feats.push(res);
-                } else if(res.type==3){
-                    $scope.$storage.abil.push(res);
-                }
-            }
-        });
-    };
-}])
+      $scope.$storage = $localStorage
+
+      console.log($scope.$storage)
+
+      $scope.abiladd = function (type) {
+          $scope.data = { type }
+          var mypop =
+          $ionicPopup.show({
+              template: 'Title: <input type="text" ng-model="data.title"> <br> Description: <textarea name="desc" cols="40" rows="5" maxlength="200" ng-model="data.description" style="height: 130px; min-height:130px; max-height:130px;">',
+              title: 'Add Ability',
+              cssClass: 'addAbil',
+              scope: $scope,
+              buttons: [
+              { text: 'Cancel' },
+              {
+                  text: 'Save',
+                  type: 'button-positive',
+                  onTap: function (e) {
+                      if ((!$scope.data.title) || (!$scope.data.description)) {
+                          e.preventDefault();
+                      } else {
+                          return $scope.data;
+                      }
+                  }
+              },
+              ]
+          });
+
+          mypop.then(function (res) {
+              if (res) {
+                  console.log(res);
+                  if (res.type == 1) {
+                      $scope.$storage.abilities[$scope.$storage.cur].spells.push(res);
+                  } else if (res.type == 2) {
+                      $scope.$storage.abilities[$scope.$storage.cur].feats.push(res);
+                  } else if (res.type == 3) {
+                      $scope.$storage.abilities[$scope.$storage.cur].abil.push(res);
+                  }
+              }
+          });
+      };
+  }])
 
  .controller('InventoryCtrl', [
         '$state', '$scope', '$ionicPopup', '$localStorage',
    function ($state, $scope, $ionicPopup, $localStorage) {
-       $scope.$storage = $localStorage.$default({
-           Gold: 0,
-           Silver: 0,
-           Copper: 0,
-           Items: [],
-           Gear: []
-       })
+       $scope.$storage = $localStorage
 
 
        $scope.shouldShowDelete = true;
@@ -217,9 +230,9 @@ angular.module('starter.controllers', [])
            mypop.then(function (res) {
                if (res) {
                    if (res.type == 1) {
-                       $scope.$storage.Items.push(res);
+                       $scope.$storage.inventories[$scope.$storage.cur].items.push(res);
                    } else if (res.type == 2) {
-                       $scope.$storage.Gear.push(res);
+                       $scope.$storage.inventories[$scope.$storage.cur].gear.push(res);
                    }
                }
            });
