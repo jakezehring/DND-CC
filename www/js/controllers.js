@@ -89,8 +89,8 @@ angular.module('starter.controllers', [])
                 Damage: "1d2",
                 Critical: "19-20",
                 Range: "0",
-                Type: "slashing",
-                Notes: " "
+                Type: "S",
+                Notes: ""
             }
             $scope.$storage.combats.push(combat);
             var ability = {
