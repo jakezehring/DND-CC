@@ -26,9 +26,24 @@ navigation history that also transitions its views in and out.
         </ion-header-bar>
         <ion-content>
             <div ng-repeat="character in characters">
-                <button ion-button ng-click=goToChar(character)>
-                    {{character}}
-                </button>
+                <div class="row">
+                    <div class="col">
+                        {{$storage.characters[character].Name}}
+                    </div>
+                    <div class="col">
+                        Level {{$storage.characters[character].Level}}
+                    </div>
+                    <div class="col">
+                        {{$storage.characters[character].Class}}
+                    </div>
+                    <div class="col col-20">
+                        <ion-buttons>
+                            <button ion-button ng-click=goToChar(character)>
+                                <i class="icon ion-arrow-right-c"></i>
+                            </button>
+                        </ion-buttons>
+                    </div>
+                </div>
             </div>
         </ion-content>
     </ion-side-menu>

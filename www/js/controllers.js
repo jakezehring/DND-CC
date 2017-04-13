@@ -6,17 +6,13 @@ angular.module('starter.controllers', [])
     $scope.openMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
     }
+        $scope.characters = [];
 
-    $scope.characters = [];
     for (cur = 0; cur < $scope.$storage.length; cur++)
-        $scope.characters.push($scope.$storage.characters[cur].Name)
+        $scope.characters.push($scope.$storage.characters[cur].tracker)
 
     $scope.goToChar = function (character) {
-        var cur = 0;
-        for (i = 0; i < $scope.$storage.length; i++) {
-            if($scope.$storage.characters[i].Name == character)
-                cur = $scope.$storage.characters[i].tracker
-        }
+        var cur = character
         $scope.$storage.cur = cur;
         $ionicSideMenuDelegate.toggleLeft();
         $window.location.reload(true);
@@ -36,7 +32,6 @@ angular.module('starter.controllers', [])
         
         $scope.rule5 = !$scope.rule3
 
-    console.log($scope.rule3)
 
 
 })
