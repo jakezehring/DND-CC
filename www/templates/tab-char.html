@@ -94,7 +94,9 @@
                     <input type="text" ngmodel="$storage.characters[cur].traits" />
                 </label>
             </div>
-            <div class="col">
+        </div>
+        <div class="row">
+            <div class="col" ng-hide="{{rule5}}">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Ideals</span>
                     <input type="text" ngmodel="$storage.characters[cur].ideals" />
@@ -108,6 +110,8 @@
                     <input type="text" ngmodel="$storage.characters[cur].bonds" />
                 </label>
             </div>
+        </div>
+        <div class="row" ng-hide="{{rule5}}">
             <div class="col">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">flaws</span>
@@ -115,5 +119,6 @@
                 </label>
             </div>
         </div>
+        <br /><br /><br />
     </ion-content>
 </ion-view>
