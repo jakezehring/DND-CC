@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
         $scope.input = {
             name: ""
         }
-        $scope.ruleset = 3.5
+        $scope.ruleset = "3.5"
 
         $scope.startApp = function (ruleset) {
             console.log($scope.name)
