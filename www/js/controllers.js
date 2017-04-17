@@ -22,18 +22,6 @@ angular.module('starter.controllers', [])
         $ionicSideMenuDelegate.toggleLeft();
         $state.go('new')
     }
-
-    $scope.rule3 = true;
-
-    if ($scope.$storage.characters === undefined)
-        $scope.rule3 = false
-    else if ($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
-        $scope.rule3 = false
-
-    $scope.rule5 = !$scope.rule3
-
-
-
 })
 
     .controller('NewCtrl', function ($scope, $state, $localStorage) {
@@ -138,19 +126,28 @@ angular.module('starter.controllers', [])
 
     if ($scope.$storage.characters[$scope.cur] === undefined)
         $state.go('new');
+    else {
+        $scope.rule3 = true;
+        if($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
+            $scope.rule3 = false
+        $scope.rule5 = !$scope.rule3
 
-    $scope.$on('$ionicView.beforeEnter', function () {
-        if ($scope.$storage.update == 1) {
-            $scope.$storage.update = 0
-            $window.location.reload(true);
-        }
+    }
+        $scope.$on('$ionicView.beforeEnter', function () {
+            if ($scope.$storage.update == 1) {
+                $scope.$storage.update = 0
+                $window.location.reload(true);
+            }
     });
 
 })
 
 .controller('CombatCtrl', function ($scope, $localStorage) {
     $scope.$storage = $localStorage
-    console.log($scope.$storage.combats[$scope.$storage.cur])
+    $scope.rule3 = true;
+    if ($scope.$storage.characters[$scope.$storage.cur].Ruleset == 3.5)
+        $scope.rule3 = false
+    $scope.rule5 = !$scope.rule3
 })
 
 .controller('AbilitiesCtrl', [
