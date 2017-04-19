@@ -88,7 +88,16 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
               controller: 'InventoryCtrl'
           }
       }
-  });
+  })
+      .state('tab.party', {
+          url: '/party',
+          views: {
+              'menuContent': {
+                  templateUrl: 'templates/party.html',
+                  controller: 'PartyCtrl'
+              }
+          }
+      });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/char');
