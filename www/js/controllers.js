@@ -239,6 +239,22 @@ angular.module('starter.controllers', [])
    }]
 )
 
-.controller('PartyCtrl', function ($scope, $localStorage) {
+.controller('PartyCtrl', function ($scope, $state, $localStorage) {
+    $scope.$storage = $localStorage
+
+    $scope.signUp = function () {
+        $state.go("signup")
+    }
+
+    $scope.login = function () {
+        $state.go("login")
+    }
+})
+
+.controller('SignUpCtrl', function ($scope, $state, $localStorage) {
+    $scope.$storage = $localStorage
+})
+
+.controller('LoginCtrl', function ($scope, $state, $localStorage) {
     $scope.$storage = $localStorage
 });
