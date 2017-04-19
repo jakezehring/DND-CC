@@ -263,10 +263,25 @@ angular.module('starter.controllers', [])
     $scope.trySignUp = function () {
         alert("sign up failed")
     }
+
+    $scope.cancel = function () {
+        $state.go("tab.party")
+    }
 })
 
 .controller('LoginCtrl', function ($scope, $state, $localStorage) {
     $scope.$storage = $localStorage
 
+    $scope.input = {
+        username: "",
+        password: ""
+    }
 
+    $scope.tryLogin = function () {
+        alert("login failed")
+    }
+
+    $scope.cancel = function () {
+        $state.go("tab.party")
+    }
 });
