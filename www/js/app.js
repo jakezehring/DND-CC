@@ -98,24 +98,16 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
               }
           }
       })
-          .state('tab.signup', {
-              url: '/signup',
-              views: {
-                  'menuContent': {
-                      templateUrl: 'templates/signup.html',
-                      controller: 'SignUpCtrl'
-                  }
-              }
-          })
-          .state('tab.login', {
-              url: '/login',
-              views: {
-                  'menuContent': {
-                      templateUrl: 'templates/login.html',
-                      controller: 'LoginCtrl'
-                  }
-              }
-          });
+.state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'SignUpCtrl'
+})
+.state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
+});
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/char');
