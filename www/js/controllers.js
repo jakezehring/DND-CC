@@ -253,8 +253,20 @@ angular.module('starter.controllers', [])
 
 .controller('SignUpCtrl', function ($scope, $state, $localStorage) {
     $scope.$storage = $localStorage
+
+    $scope.input = {
+        username: "",
+        password1: "",
+        password2: ""
+        }
+
+    $scope.trySignUp = function () {
+        alert("sign up failed")
+    }
 })
 
 .controller('LoginCtrl', function ($scope, $state, $localStorage) {
     $scope.$storage = $localStorage
+
+
 });
