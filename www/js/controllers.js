@@ -146,7 +146,6 @@ angular.module('starter.controllers', [])
 
 .controller('CombatCtrl', function ($scope, $localStorage) {
     $scope.$storage = $localStorage
-    console.log($scope.$storage.combats[$scope.$storage.cur])
 })
 
 .controller('AbilitiesCtrl', [
@@ -238,4 +237,8 @@ angular.module('starter.controllers', [])
            });
        };
    }]
-);
+)
+
+.controller('PartyCtrl', function ($scope, $localStorage) {
+    $scope.$storage = $localStorage
+});
