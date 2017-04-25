@@ -253,8 +253,10 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('SignUpCtrl', function ($scope, $state, $localStorage) {
+.controller('SignUpCtrl', function ($scope, $state, $localStorage, $firebaseAuth) {
     $scope.$storage = $localStorage
+
+    console.log($firebaseAuth)
 
     $scope.input = {
         username: "",
@@ -263,7 +265,15 @@ angular.module('starter.controllers', [])
         }
 
     $scope.trySignUp = function () {
-        alert("sign up failed")
+        var auth = $firebaseAuth();
+        auth.$createUserWithEmailAndPassword($scope.input.username, $scope.input.password1)
+        .then(function (firebaseUser) {
+            console.log(firebaseUser)
+            $state.go("tab.party")
+        }).catch(function (error) {
+            alert(error)
+            console.log(error)
+        })
     }
 
     $scope.cancel = function () {
@@ -271,7 +281,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('LoginCtrl', function ($scope, $state, $localStorage) {
+.controller('LoginCtrl', function ($scope, $state, $localStorage, $firebaseAuth) {
     $scope.$storage = $localStorage
 
     $scope.input = {
@@ -280,7 +290,7 @@ angular.module('starter.controllers', [])
     }
 
     $scope.tryLogin = function () {
-        alert("login failed")
+;
     }
 
     $scope.cancel = function () {
