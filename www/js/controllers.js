@@ -243,6 +243,10 @@ angular.module('starter.controllers', [])
 
 .controller('PartyCtrl', function ($scope, $state, $localStorage, $firebase) {
     $scope.$storage = $localStorage
+    
+    $scope.signedin = true;
+    if ($scope.$storage.user === undefined)
+        $scope.signedin = false;
 
     console.log($scope.$storage.user)
 
