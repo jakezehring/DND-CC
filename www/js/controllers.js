@@ -241,8 +241,10 @@ angular.module('starter.controllers', [])
    }]
 )
 
-.controller('PartyCtrl', function ($scope, $state, $localStorage) {
+.controller('PartyCtrl', function ($scope, $state, $localStorage, $firebase) {
     $scope.$storage = $localStorage
+
+    console.log($scope.$storage.user)
 
     $scope.signUp = function () {
         $state.go("signup")
@@ -266,8 +268,10 @@ angular.module('starter.controllers', [])
 
     $scope.trySignUp = function () {
         var auth = $firebaseAuth();
+        $scope.$storage.user = null;
         auth.$createUserWithEmailAndPassword($scope.input.username, $scope.input.password1)
         .then(function (firebaseUser) {
+            $scope.$storage.user = firebaseUser;
             console.log(firebaseUser)
             $state.go("tab.party")
         }).catch(function (error) {
@@ -290,7 +294,16 @@ angular.module('starter.controllers', [])
     }
 
     $scope.tryLogin = function () {
-;
+        var auth = $firebaseAuth();
+        $scope.$storage.user = null;
+        auth.$signInWithEmailAndPassword($scope.input.username, $scope.input.password)
+        .then(function (firebaseUser) {
+            $scope.$storage.user = firebaseUser;
+            $state.go("tab.party")
+        }).catch(function (error) {
+            alert(error)
+            console.log(error)
+        })
     }
 
     $scope.cancel = function () {
