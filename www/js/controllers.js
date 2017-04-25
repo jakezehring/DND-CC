@@ -56,7 +56,9 @@ angular.module('starter.controllers', [])
                     Ideals: "",
                     Bonds: "",
                     Flaws: "",
-                    tracker: $scope.$storage.length
+                    tracker: $scope.$storage.length,
+                    id: null,
+                    uploaded: false
                 }
                 $scope.$storage.characters.push(character);
                 $scope.$storage.length = $scope.$storage.length + 1;
@@ -241,8 +243,42 @@ angular.module('starter.controllers', [])
    }]
 )
 
-.controller('PartyCtrl', function ($scope, $state, $localStorage, $firebase) {
+.controller('PartyCtrl', function ($scope, $state, $localStorage, $firebaseArray) {
     $scope.$storage = $localStorage
+
+    if ($scope.$storage.user != undefined) {
+        if (!$scope.$storage.characters[$scope.$storage.cur].uploaded) {
+            console.log($scope.$storage.characters[$scope.$storage.cur])
+            var ref = firebase.database().ref("Characters");
+            var chars = $firebaseArray(ref);
+            var char = {
+                Owner: $scope.$storage.user.email,
+                Name: $scope.$storage.characters[$scope.$storage.cur].Name,
+                Class: $scope.$storage.characters[$scope.$storage.cur].Class,
+                Level: $scope.$storage.characters[$scope.$storage.cur].Level,
+                HP: $scope.$storage.combats[$scope.$storage.cur].HP,
+                Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp,
+                party: null
+            };
+            chars.$loaded().then(function () {
+                console.log("Data loaded")
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+            chars.$add({ char }).then(function (ref) {
+                $scope.$storage.characters[$scope.$storage.cur].uploaded = true
+                $scope.$storage.characters[$scope.$storage.cur].id = ref
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+        }
+    }
+
+    $scope.input = {
+        title: ""
+    }
     
     $scope.signedin = true;
     if ($scope.$storage.user === undefined)
@@ -257,12 +293,17 @@ angular.module('starter.controllers', [])
     $scope.login = function () {
         $state.go("login")
     }
+
+    $scope.create = function () {
+        if($scope.input.title != "")
+            alert("hi")
+        else
+            alert("Please enter a name for your party")
+    }
 })
 
 .controller('SignUpCtrl', function ($scope, $state, $localStorage, $firebaseAuth) {
     $scope.$storage = $localStorage
-
-    console.log($firebaseAuth)
 
     $scope.input = {
         username: "",
