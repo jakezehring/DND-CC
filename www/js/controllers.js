@@ -249,7 +249,7 @@ angular.module('starter.controllers', [])
         title: ""
     }
     $scope.input.search = ""
-    $scope.title = "party"
+    $scope.title = "Party"
     $scope.party = []
     console.log($scope.$storage.characters[$scope.$storage.cur].id)
     
@@ -325,9 +325,20 @@ angular.module('starter.controllers', [])
                 if(party == null)
                     alert("Party does not exist")
                 else {
-                    console.log(party.$id)
-                    $scope.$storage.characters[$scope.$storage.cur].id = party.$id
-                    $window.location.reload(true);
+                    var char = {
+                        Owner: $scope.$storage.user.email,
+                        Name: $scope.$storage.characters[$scope.$storage.cur].Name,
+                        Class: $scope.$storage.characters[$scope.$storage.cur].Class,
+                        Level: $scope.$storage.characters[$scope.$storage.cur].Level,
+                        HP: $scope.$storage.combats[$scope.$storage.cur].HP,
+                        Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
+                    };
+                    party.party.Characters.push(char)
+                    parties.$save(party).then(function () {
+                        console.log(party.$id)
+                        $scope.$storage.characters[$scope.$storage.cur].id = party.$id
+                        $window.location.reload(true);
+                    })
                 }
             })
 
