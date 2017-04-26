@@ -248,6 +248,7 @@ angular.module('starter.controllers', [])
     $scope.input = {
         title: ""
     }
+    $scope.input.search = ""
     $scope.title = "party"
     $scope.party = []
     console.log($scope.$storage.characters[$scope.$storage.cur].id)
@@ -311,6 +312,26 @@ angular.module('starter.controllers', [])
         }
         else
             alert("Please enter a name for your party")
+    }
+
+    $scope.join = function () {
+        if($scope.input.search == "")
+            alert("Please enter a party name")
+        else {
+            var ref = firebase.database().ref("Parties");
+            var parties = $firebaseArray(ref);
+            parties.$loaded().then(function () {
+                party = parties.$getRecord($scope.input.search)
+                if(party == null)
+                    alert("Party does not exist")
+                else {
+                    console.log(party.$id)
+                    $scope.$storage.characters[$scope.$storage.cur].id = party.$id
+                    $window.location.reload(true);
+                }
+            })
+
+        }
     }
 })
 
