@@ -1,6 +1,6 @@
-<ion-view title="Party">
+<ion-view title="{{title}}">
     <ion-content>
-        <div ng-hide="{{signedin}}">
+        <div ng-hide="!{{signedin1}}">
             Sign up or login to use online features
             <br /><br /><br />
             <div class="row">
@@ -17,7 +17,7 @@
                      </div>
                 </div>
          </div>
-        <div ng-hide="!{{signedin}}">
+        <div ng-hide="!{{signedin2}}">
             currently signed in as: {{$storage.user.email}}
             <div>
                 Join a party with code {{$storage.user.uid}}
@@ -38,6 +38,11 @@
                 <div>
                     <button ng-click="create()">Create</button>
                 </div>
+            </div>
+        </div>
+        <div ng-hide="!{{inparty}}">
+            <div ng-repeat="character in party">
+                {{character.Name}}
             </div>
         </div>
     </ion-content>
