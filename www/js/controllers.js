@@ -250,7 +250,7 @@ angular.module('starter.controllers', [])
     }
     $scope.input.search = ""
     $scope.title = "Party"
-    $scope.party = []
+    $scope.friends = []
     console.log($scope.$storage.characters[$scope.$storage.cur].id)
     
     $scope.signedin1 = false;
@@ -260,13 +260,12 @@ angular.module('starter.controllers', [])
         if ($scope.$storage.characters[$scope.$storage.cur].id == -1)
             $scope.signedin2 = true;
         else {
-            var ref = firebase.database().ref("Parties");
-            var ref2 = $firebaseArray(ref);
-            var parties = null
-            ref2.$loaded().then(function () {
-                party = ref2.$getRecord($scope.$storage.characters[$scope.$storage.cur].id)
-                $scope.title = party.party.Name
-                $scope.party = party.party.Characters
+            var ref = firebase.database().ref("Parties/" + $scope.$storage.characters[$scope.$storage.cur].id);
+            console.log(ref)
+            var party = $firebaseArray(ref);
+            party.$loaded().then(function () {
+                $scope.title = party[1].$value
+                $scope.friends = party[0]
             })
             $scope.inparty = true;
         }
@@ -284,30 +283,31 @@ angular.module('starter.controllers', [])
 
     $scope.create = function () {
         if ($scope.input.title != "") {
-            var ref = firebase.database().ref("Parties");
-            var parties = $firebaseArray(ref);
-            var party = {
-                Owner: $scope.$storage.user.email,
-                Name: $scope.input.title,
-                Characters: []
-            };
-            var char = {
-                Owner: $scope.$storage.user.email,
-                Name: $scope.$storage.characters[$scope.$storage.cur].Name,
-                Class: $scope.$storage.characters[$scope.$storage.cur].Class,
-                Level: $scope.$storage.characters[$scope.$storage.cur].Level,
-                HP: $scope.$storage.combats[$scope.$storage.cur].HP,
-                Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
-            };
-            party.Characters.push(char)
-            parties.$add({ party }).then(function (ref) {
-                console.log(ref)
-                $scope.$storage.characters[$scope.$storage.cur].id = ref.key
-                console.log($scope.$storage.characters[$scope.$storage.cur].id)
-                //$window.location.reload(true);
-            })
-            .catch(function (error) {
-                console.log(error)
+            var test = $firebaseArray(firebase.database().ref("Parties/" + $scope.input.title))
+            test.$loaded().then(function () {
+                if (!(test[0] === undefined))
+                    alert("party already exists")
+                else {
+                    var ref = firebase.database().ref("Parties");
+                    var party = {
+                        Owner: $scope.$storage.user.email,
+                        Name: $scope.input.title,
+                        Characters: []
+                    };
+                    var char = {
+                        Owner: $scope.$storage.user.email,
+                        Name: $scope.$storage.characters[$scope.$storage.cur].Name,
+                        Class: $scope.$storage.characters[$scope.$storage.cur].Class,
+                        Level: $scope.$storage.characters[$scope.$storage.cur].Level,
+                        HP: $scope.$storage.combats[$scope.$storage.cur].HP,
+                        Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
+                    };
+                    party.Characters.push(char)
+                    ref.child($scope.input.title).set(party).then(function () {
+                        $scope.$storage.characters[$scope.$storage.cur].id = $scope.input.title
+                        $window.location.reload(true);
+                    })
+                }
             })
         }
         else
@@ -318,11 +318,13 @@ angular.module('starter.controllers', [])
         if($scope.input.search == "")
             alert("Please enter a party name")
         else {
-            var ref = firebase.database().ref("Parties");
-            var parties = $firebaseArray(ref);
-            parties.$loaded().then(function () {
-                party = parties.$getRecord($scope.input.search)
-                if(party == null)
+            var ref = firebase.database().ref().child("Party")
+            var query = ref.orderByChild("Name").equalTo("MEMEME")
+            var party = $firebaseArray(query)
+            party.$loaded().then(function () {
+                console.log(party)
+                /*
+                if(!data.exists())
                     alert("Party does not exist")
                 else {
                     var char = {
@@ -333,13 +335,15 @@ angular.module('starter.controllers', [])
                         HP: $scope.$storage.combats[$scope.$storage.cur].HP,
                         Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
                     };
-                    party.party.Characters.push(char)
+                    var party = $firebaseArray(data)
+                    party.Characters.push(char)
                     parties.$save(party).then(function () {
                         console.log(party.$id)
                         $scope.$storage.characters[$scope.$storage.cur].id = party.$id
                         $window.location.reload(true);
                     })
                 }
+                */
             })
 
         }

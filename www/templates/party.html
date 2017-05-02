@@ -50,8 +50,8 @@
             </div>
         </div>
         <div ng-hide="!{{inparty}}">
-            <div ng-repeat="character in party">
-                {{character.Name}} {{character.class}} {{character.level}} {{character.HP}}
+            <div ng-repeat="character in friends">
+                {{character.Name}} {{character.Class}} level {{character.Level}} {{character.HP}} / {{character.Max_hp}} hp
             </div>
         </div>
     </ion-content>
