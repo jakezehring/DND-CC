@@ -333,7 +333,10 @@ angular.module('starter.controllers', [])
                         Class: $scope.$storage.characters[$scope.$storage.cur].Class,
                         Level: $scope.$storage.characters[$scope.$storage.cur].Level,
                         HP: $scope.$storage.combats[$scope.$storage.cur].HP,
-                        Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
+                        Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp,
+                        Weapon: $scope.$storage.combats[$scope.$storage.cur].Weapon,
+                        Damage: $scope.$storage.combats[$scope.$storage.cur].Damage,
+                        Bonus: $scope.$storage.combats[$scope.$storage.cur].Bonus
                     };
                     party[0].push(char)
                     $scope.$storage.characters[$scope.$storage.cur].index = party[0].length - 1

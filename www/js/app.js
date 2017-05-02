@@ -10,28 +10,28 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
         $ionicConfigProvider.tabs.position('bottom');
     })
 
-.run(function($ionicPlatform, $localStorage) {
+.run(function ($ionicPlatform, $localStorage) {
     $ionicPlatform.ready(function () {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
+        }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+        }
+    });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
     $stateProvider
 
     .state('new', {
@@ -42,42 +42,42 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
 
   // setup an abstract state for the tabs directive
     .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html',
-    controller: 'TabsCtrl'
-  })
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html',
+        controller: 'TabsCtrl'
+    })
 
   // Each tab has its own nav history stack:
 
   .state('tab.char', {
       url: '/char',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/tab-char.html',
-        controller: 'CharCtrl',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/tab-char.html',
+              controller: 'CharCtrl',
+          }
       }
-    }
   })
 
   .state('tab.combat', {
       url: '/combat',
       views: {
-        'menuContent': {
-          templateUrl: 'templates/tab-combat.html',
-          controller: 'CombatCtrl'
-        }
+          'menuContent': {
+              templateUrl: 'templates/tab-combat.html',
+              controller: 'CombatCtrl'
+          }
       }
-    })
+  })
 
   .state('tab.abilities', {
-    url: '/abilities',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/tab-abilities.html',
-        controller: 'AbilitiesCtrl'
+      url: '/abilities',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/tab-abilities.html',
+              controller: 'AbilitiesCtrl'
+          }
       }
-    }
   })
 
   .state('tab.inventory', {
@@ -98,6 +98,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
               }
           }
       })
+
 .state('signup', {
     url: '/signup',
     templateUrl: 'templates/signup.html',
@@ -109,7 +110,7 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova', 'starter.controlle
     controller: 'LoginCtrl'
 });
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/char');
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/char');
 
 });

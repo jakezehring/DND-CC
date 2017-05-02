@@ -1,6 +1,6 @@
 <ion-view title="{{title}}">
     <ion-content>
-        <div ng-hide="!{{signedin1}}">
+        <div ng-hide="!signedin1">
             Sign up or login to use online features
             <br /><br /><br />
             <div class="row">
@@ -17,7 +17,7 @@
                      </div>
                 </div>
          </div>
-        <div ng-hide="!{{signedin2}}">
+        <div ng-hide="!signedin2">
             <div class="row">
                 <div class="col col-20">
                     Join a party:
@@ -71,7 +71,7 @@
                 <div ng-show="character.show">
                     <div class="row">
                         <div class="col">
-                            HEHEHE
+                            Weapon:  {{character.Weapon}} {{character.Damage}} + {{character.Bonus}}
                         </div>
                     </div>
                 </div>
