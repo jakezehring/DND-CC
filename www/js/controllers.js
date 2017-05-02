@@ -266,6 +266,8 @@ angular.module('starter.controllers', [])
             party.$loaded().then(function () {
                 $scope.title = party[1].$value
                 $scope.friends = party[0]
+                for(cur = 0; cur < $scope.friends.length; cur++)
+                    $scope.friends[cur].show = false
             })
             $scope.inparty = true;
         }
@@ -361,6 +363,13 @@ angular.module('starter.controllers', [])
                 })
             }
         })
+    }
+
+    $scope.show = function (character) {
+        for (cur = 0; cur < $scope.friends.length; cur++)
+            if ($scope.friends[cur].Name == character.Name) {
+                $scope.friends[cur].show = !$scope.friends[cur].show
+            }
     }
 })
 
