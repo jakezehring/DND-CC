@@ -318,14 +318,12 @@ angular.module('starter.controllers', [])
         if($scope.input.search == "")
             alert("Please enter a party name")
         else {
-            var ref = firebase.database().ref().child("Party")
-            var query = ref.orderByChild("Name").equalTo("MEMEME")
-            var party = $firebaseArray(query)
+            var ref = firebase.database().ref("Parties/" + $scope.input.search)
+            var party = $firebaseArray(ref)
             party.$loaded().then(function () {
-                console.log(party)
-                /*
-                if(!data.exists())
-                    alert("Party does not exist")
+                if (party[0] === undefined) {
+                    alert("Party not found")
+                }
                 else {
                     var char = {
                         Owner: $scope.$storage.user.email,
@@ -335,15 +333,12 @@ angular.module('starter.controllers', [])
                         HP: $scope.$storage.combats[$scope.$storage.cur].HP,
                         Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
                     };
-                    var party = $firebaseArray(data)
-                    party.Characters.push(char)
-                    parties.$save(party).then(function () {
-                        console.log(party.$id)
-                        $scope.$storage.characters[$scope.$storage.cur].id = party.$id
+                    party[0].push(char)
+                    party.$save(party[0]).then(function () {
+                        $scope.$storage.characters[$scope.$storage.cur].id = $scope.input.search
                         $window.location.reload(true);
                     })
                 }
-                */
             })
 
         }
