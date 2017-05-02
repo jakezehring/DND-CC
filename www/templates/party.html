@@ -53,6 +53,8 @@
             <div ng-repeat="character in friends">
                 {{character.Name}} {{character.Class}} level {{character.Level}} {{character.HP}} / {{character.Max_hp}} hp
             </div>
+            <br /><br />
+            <button ng-click="leave()">Leave Party</button>
         </div>
     </ion-content>
 </ion-view>

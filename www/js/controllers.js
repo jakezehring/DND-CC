@@ -334,6 +334,7 @@ angular.module('starter.controllers', [])
                         Max_hp: $scope.$storage.combats[$scope.$storage.cur].Max_hp
                     };
                     party[0].push(char)
+                    $scope.$storage.characters[$scope.$storage.cur].index = party[0].length - 1
                     party.$save(party[0]).then(function () {
                         $scope.$storage.characters[$scope.$storage.cur].id = $scope.input.search
                         $window.location.reload(true);
@@ -342,6 +343,24 @@ angular.module('starter.controllers', [])
             })
 
         }
+    }
+
+    $scope.leave = function () {
+        var ref = firebase.database().ref("Parties/" + $scope.$storage.characters[$scope.$storage.cur].id)
+        var party = $firebaseArray(ref)
+        party.$loaded().then(function () {
+            var location = -1
+            for (cur = 0; cur < party[0].length; cur++)
+                if (party[0][cur].Name == $scope.$storage.characters[$scope.$storage.cur].Name)
+                    location = cur
+            if (location != 1 && party[0][cur].Owner == $scope.$storage.user.email) {
+                party[0].splice(cur, 1)
+                party.$save(party[0]).then(function () {
+                    $scope.$storage.characters[$scope.$storage.cur].id = -1
+                    $window.location.reload(true);
+                })
+            }
+        })
     }
 })
 
