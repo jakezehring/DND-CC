@@ -355,11 +355,12 @@ angular.module('starter.controllers', [])
         var party = $firebaseArray(ref)
         party.$loaded().then(function () {
             var location = -1
+            console.log(party[0])
             for (cur = 0; cur < party[0].length; cur++)
                 if (party[0][cur].Name == $scope.$storage.characters[$scope.$storage.cur].Name)
                     location = cur
-            if (location != 1 && party[0][cur].Owner == $scope.$storage.user.email) {
-                party[0].splice(cur, 1)
+            if (location != 1 && party[0][location].Owner == $scope.$storage.user.email) {
+                party[0].splice(location, 1)
                 party.$save(party[0]).then(function () {
                     $scope.$storage.characters[$scope.$storage.cur].id = -1
                     $window.location.reload(true);
