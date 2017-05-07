@@ -252,28 +252,34 @@ angular.module('starter.controllers', [])
     $scope.title = "Party"
     $scope.friends = []
     console.log($scope.$storage.characters[$scope.$storage.cur].id)
-    
+
     $scope.signedin1 = false;
     $scope.signedin2 = false;
     $scope.inparty = false;
-    if (!($scope.$storage.user === undefined)) {
-        if ($scope.$storage.characters[$scope.$storage.cur].id == -1)
-            $scope.signedin2 = true;
-        else {
-            var ref = firebase.database().ref("Parties/" + $scope.$storage.characters[$scope.$storage.cur].id);
-            console.log(ref)
-            var party = $firebaseArray(ref);
-            party.$loaded().then(function () {
-                $scope.title = party[1].$value
-                $scope.friends = party[0]
-                for(cur = 0; cur < $scope.friends.length; cur++)
-                    $scope.friends[cur].show = false
-            })
-            $scope.inparty = true;
+    
+    $scope.$on('$ionicView.beforeEnter', function () {
+        $scope.signedin1 = false;
+        $scope.signedin2 = false;
+        $scope.inparty = false;
+        if (!($scope.$storage.user === undefined)) {
+            if ($scope.$storage.characters[$scope.$storage.cur].id == -1)
+                $scope.signedin2 = true;
+            else {
+                var ref = firebase.database().ref("Parties/" + $scope.$storage.characters[$scope.$storage.cur].id);
+                console.log(ref)
+                var party = $firebaseArray(ref);
+                party.$loaded().then(function () {
+                    $scope.title = party[1].$value
+                    $scope.friends = party[0]
+                    for(cur = 0; cur < $scope.friends.length; cur++)
+                        $scope.friends[cur].show = false
+                })
+                $scope.inparty = true;
+            }
         }
-    }
-    else
-        $scope.signedin1 = true;
+        else
+            $scope.signedin1 = true;
+    })
 
     $scope.signUp = function () {
         $state.go("signup")
