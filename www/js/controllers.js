@@ -262,17 +262,20 @@ angular.module('starter.controllers', [])
         $scope.signedin2 = false;
         $scope.inparty = false;
         if (!($scope.$storage.user === undefined)) {
-            if ($scope.$storage.characters[$scope.$storage.cur].id == -1)
+            if ($scope.$storage.characters[$scope.$storage.cur].id == -1) {
                 $scope.signedin2 = true;
+                console.log("here");
+            }
             else {
+                console.log("there")
                 var ref = firebase.database().ref("Parties/" + $scope.$storage.characters[$scope.$storage.cur].id);
                 var party = $firebaseArray(ref);
                 party.$loaded().then(function () {
                     $scope.title = party[1].$value
                     $scope.friends = party[0]
-                    for(cur = 0; cur < $scope.friends.length; cur++)
-                        $scope.friends[cur].show = false
-                    $scope.inparty = true
+                    for (cur = 0; cur < $scope.friends.length; cur++)
+                        $scope.friends[cur].show = false;
+                    $scope.inparty = true;
                 })
             }
         }
