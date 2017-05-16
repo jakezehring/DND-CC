@@ -266,15 +266,14 @@ angular.module('starter.controllers', [])
                 $scope.signedin2 = true;
             else {
                 var ref = firebase.database().ref("Parties/" + $scope.$storage.characters[$scope.$storage.cur].id);
-                console.log(ref)
                 var party = $firebaseArray(ref);
                 party.$loaded().then(function () {
                     $scope.title = party[1].$value
                     $scope.friends = party[0]
                     for(cur = 0; cur < $scope.friends.length; cur++)
                         $scope.friends[cur].show = false
+                    $scope.inparty = true
                 })
-                $scope.inparty = true;
             }
         }
         else
